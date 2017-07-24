@@ -184,7 +184,7 @@
 
 
 import numpy as np
-import scipy.weave
+import weave
 import scipy.linalg as spla
 
 # Update Cholesky decomposition to include a single extra
@@ -237,8 +237,8 @@ def fast_chol_add(L, A):
             }
         }
         """
-        scipy.weave.inline(code, ['U','A','j','isPosDef','rows','cols'], \
-                               type_converters=scipy.weave.converters.blitz, \
+        weave.inline(code, ['U','A','j','isPosDef','rows','cols'], \
+                               type_converters=weave.converters.blitz, \
                                compiler='gcc')
     except:
         k = np.arange(cols)
